@@ -1,0 +1,51 @@
+# Dockerfile imagen base de debian
+FROM debian
+
+# ARGUMENTOS
+ARG SSH_PORT
+ARG TZ
+ARG ADMIN_USER
+ARG ADMIN_PASSWORD
+
+# Establecer la zona horaria
+RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
+
+# PAQUETERÍA
+# Actualizar lista de paquetes, actualizar paquetes y instalación de los paquetes necesarios
+RUN apt update && apt upgrade -y && DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends \
+    # Utilidades
+    apt-utils \
+    # Gestión de ficheros
+    tree \
+    locate \
+    vim \
+    # Seguridad
+    sudo \
+    # Red
+    iputils-ping \
+    iproute2 \
+    openssh-server \
+    iptables \
+    iptables-persistent \
+    net-tools \
+    # Automatización
+    expect \
+    # remover paquetes huérfanos
+    && apt autoremove -y
+
+# Copiar clave rsa para el autentificado sin contraseña del servicio SSH
+COPY ./id_rsa.pub /root
+
+# SCRIPTS
+# Copiar los scripts al contenedor
+COPY ./start.sh /root
+COPY ./scripts /root/scripts
+# Conceder permisos de ejecución a los scripts
+RUN chmod u+x /root/start.sh
+RUN chmod u+x /root/scripts -R
+
+# Exponer puerto ssh
+EXPOSE ${SSH_PORT}
+
+# Ejecutar el script de incio
+ENTRYPOINT [ "/root/start.sh" ]

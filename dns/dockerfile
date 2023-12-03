@@ -1,0 +1,28 @@
+# Dockerfile para el servicio DNS
+# Partimos de la imagen base de debian
+FROM deb-base  
+
+# PAQUETERÍA
+# Instalación de los paquetes necesarios
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -yq --no-install-recommends \
+    # Servicio DNS
+    bind9 \
+    dnsutils \
+    geoip-bin \
+    bind9-doc
+
+
+# SCRIPTS
+# Copiar los scripts al contenedor
+COPY ./dns/start_dns.sh /root
+COPY ./dns/scriptsDNS /root/scriptsDNS
+# Conceder permisos de ejecución a los scripts
+RUN chmod u+x /root/start_dns.sh
+RUN chmod u+x /root/scriptsDNS -R
+
+# Exponer puertos DNS
+EXPOSE 53/tcp
+EXPOSE 53/udp
+
+# Ejecutamos el script de inicio del servicio SSH
+ENTRYPOINT [ "/root/start_dns.sh" ]

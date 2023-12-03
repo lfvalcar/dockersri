@@ -1,0 +1,7 @@
+# Omitimos subir la clave rsa utilizada
+base/id_rsa.pub
+# Omitimos subir las pruebas con la imagen base
+base/docker-compose.yml
+
+# Omitimos subir el archivo de variables
+.env
