@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script de configuración del servicio SSH en la imagen base
 
-set -eu # Seguimiento de errores de las variables y carga de las variables de entorno
+set -e # Carga de las variables de entorno
 
 configSSH(){ # Función de configuración del servicio SSH
     if [ ! -f /etc/ssh/sshd_config ] # Comprobar si existe el archivo de confguración del servicio SSH
@@ -24,7 +24,7 @@ configSSH(){ # Función de configuración del servicio SSH
 
         cat /root/id_rsa.pub >> /home/${ADMIN_USER}/.ssh/authorized_keys # Añadir la clave rsa al home del usuario administrador
 
-        /usr/sbin/sshd -D # Ejecución del servicio SSH en segundo plano
+        /usr/sbin/sshd -D & # Ejecución del servicio SSH en segundo plano
 
         return 0 # Servicio SSH configurado con éxito
     fi

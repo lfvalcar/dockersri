@@ -1,22 +1,24 @@
 #!/bin/bash
 # Script de inicio del servicio DNS
 
-set -eu # Seguimiento de errores de las variables y carga de las variables de entorno
+set -e # Carga de las variables de entorno
 
 # Iniciamos el script de inicio de la imagen base
-bash /root/start.sh
-# Traer funciones
-source /root/scriptsDNS/configDNS.sh
+bash "${SCRIPTS_BASE}/start.sh"
 
-main(){ # Función principal de configuración del servicio DNS
+# Traer funciones
+source "${SCRIPTS_DNS}/configDNS.sh"
+
+mainDNS(){ # Función principal de configuración del servicio DNS
     configDNS
     resultadoConfigDNS=$?
     if [ $resultadoConfigDNS -eq 0 ]
     then    
         echo 'Servicio DNS configurado y ejecutado con éxito'
+        /usr/sbin/named -f -c /etc/bind/named.conf -u bind # Ejecución del servicio
     else
         echo 'Error en el proceso de configuración del servicio DNS'
     fi
 }
 
-main
+mainDNS

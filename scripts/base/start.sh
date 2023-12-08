@@ -1,11 +1,11 @@
 #!/bin/bash
 # Script de inicio de la imagen base
 
-set -eu # Seguimiento de errores de las variables y carga de las variables de entorno
+set -e # Carga de las variables de entorno
 
 # Traer las funciones
-source /root/scripts/adminUser.sh
-source /root/scripts/configSSH.sh
+source "${SCRIPTS_BASE}/adminUser.sh"
+source "${SCRIPTS_BASE}/configSSH.sh"
 
 main(){ # Función principal
     adminUser # Función creación de usuario administrador

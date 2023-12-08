@@ -1,7 +1,7 @@
 #!/bin/bash
 # Script de creación del usuario administrador en la imagen base
 
-set -eu # Seguimiento de errores de las variables y carga de las variables de entorno
+set -e # Carga de las variables de entorno
 
 adminUser(){ # Función que crea el usuario administrador del sistema base
         if [ $(grep -c ${ADMIN_USER} /etc/passwd) -eq 1 ] # Comprobar de que el usuario no exista mirando en el registro de usuarios
