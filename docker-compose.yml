@@ -9,38 +9,21 @@ services:
       context: ${CONTEXT}
       dockerfile: ${CONTEXT}/dns/dockerfile
     ports:
-      - "${SSH_PORT}:${SSH_PORT}"
+      - "2101:${SSH_PORT}"
     volumes:
       - dns_bind_vol:/etc/bind:ro
       - dns_zonas_vol:/var/cache/bind:rw
     networks:
       netddns:
-        ipv4_address: 172.9.10.2
-  dhcp:
-    container_name: dhcpsrv
-    image: isc-dhcp-server
-    env_file:
-      - .env
-    build:
-      context: ${CONTEXT}
-      dockerfile: ${CONTEXT}/dhcp/dockerfile
-    ports:
-      - "2223:${SSH_PORT}"
-    volumes:
-      - dhcp_vol:/etc/dhcp:ro
-    networks:
-      netddns:
-        ipv4_address: 172.9.10.3
+        ipv4_address: 172.16.1.2
 networks:
   netddns:
     ipam:
       driver: default
       config: 
-        - subnet: 172.9.10.0/24
+        - subnet: 172.16.1.0/24
 volumes:
   dns_bind_vol:
     external: true
   dns_zonas_vol:
-    external: true
-  dhcp_vol:
     external: true

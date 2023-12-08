@@ -1,5 +1,9 @@
 SSH_PORT=22
+CONTEXT='~/dockersri'
+BASE_LOG='/root/logs/base.log'
+DNS_LOG='/root/logs/dns.log'
+DHCP_LOG='/root/logs/dhcp.log'
+ADMIN_USER='tu_usuario'
+ADMIN_PASSWORD='tu_contraseña'
 TZ='Zona/Horaria'
-ADMIN_USER='adminuser'
-ADMIN_PASSWORD='adminpassword'
-CONTEXT='dockercompose'
+DEBIAN_FRONTEND='noninteractive'

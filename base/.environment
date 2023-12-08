@@ -1,5 +1,0 @@
-SSH_PORT=22
-TZ='Zona/Horaria'
-ADMIN_USER='adminuser'
-ADMIN_PASSWORD='adminpassword'
-CONTEXT='dockercompose'
