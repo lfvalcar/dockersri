@@ -15,7 +15,7 @@ mainDNS(){ # Función principal de configuración del servicio DNS
     if [ $resultadoConfigDNS -eq 0 ]
     then    
         echo 'Servicio DNS configurado y ejecutado con éxito'
-        /usr/sbin/named -f -c /etc/bind/named.conf -u bind # Ejecución del servicio
+        /usr/sbin/named -g -c /etc/bind/named.conf -u bind # Ejecución del servicio
     else
         echo 'Error en el proceso de configuración del servicio DNS'
     fi

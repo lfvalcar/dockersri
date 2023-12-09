@@ -20,6 +20,7 @@ main(){ # Función principal
         then
             # Éxito
             echo 'Servicio SSH configurado y ejecutado con éxito, proceso completado'
+            /usr/sbin/sshd -D & # Ejecución del servicio SSH en segundo plano
         else   
             # Error 
             echo 'Error en el proceso de configuración del servicio SSH'

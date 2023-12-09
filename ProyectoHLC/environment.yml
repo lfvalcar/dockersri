@@ -1,0 +1,17 @@
+# Contexto
+CONTEXT=/home/luis/dockersri
+IDRSA=claves/id_rsa.pub
+# Puertos
+SSH_PORT=2222
+DNS_PORT=53
+DHCP_PORT=67
+HTTP_PORT=80
+# Usuarios y contraseñas
+ADMIN_USER=adminsrv
+ADMIN_PASSWORD=adminsrv
+# Carpeta Scripts
+SCRIPTS=/root/scripts
+# Dockerfiles
+DNS_DOCKERFILE=dockerfiles/dns_hlc
+DHCP_DOCKERFILE=dockerfiles/dhcp_hlc
+HTTP_DOCKERFILE=dockerfiles/web_log

@@ -1,9 +1,7 @@
 # Dockerfile imagen base de debian
 FROM debian
 
-# Variables de entorno para la imagen base
-ENV TZ=Europe/Madrid
-ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ='Europe/Madrid'
 ENV SSH_PORT=2222
 
 # Establecer la zona horaria
@@ -31,7 +29,7 @@ RUN apt update && apt upgrade -y && apt install -yq --no-install-recommends \
     expect
 
 # Copiar clave rsa para el autentificado sin contraseña del servicio SSH
-COPY ./id_rsa.pub /root
+COPY ./claves/id_rsa.pub /root
 
 # Se situa en la carpeta root
 WORKDIR /root

@@ -1,9 +1,20 @@
+# Puertos
 SSH_PORT=22
+DNS_PORT=53
+DHCP_PORT=67
+# Directorio de trabajo del docker compose
 CONTEXT='~/dockersri'
+# Archivos logs
 BASE_LOG='/root/logs/base.log'
-DNS_LOG='/root/logs/dns.log'
-DHCP_LOG='/root/logs/dhcp.log'
-ADMIN_USER='tu_usuario'
-ADMIN_PASSWORD='tu_contraseña'
+DDNS_LOG='/root/logs/ddns.log'
+# Usuarios y contraseñas
+ADMIN_USER='user'
+ADMIN_PASSWORD='password'
+# Configuración del sistema
 TZ='Zona/Horaria'
 DEBIAN_FRONTEND='noninteractive'
+# Carpeta Scripts
+SCRIPTS_BASE='/root/scripts/base'
+SCRIPTS_DDNS='/root/scripts/ddns'
+# Configuración del serivicio DHCP
+DHCPD_PROTOCOL=4

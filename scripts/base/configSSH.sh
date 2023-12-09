@@ -23,9 +23,6 @@ configSSH(){ # Función de configuración del servicio SSH
         fi
 
         cat /root/id_rsa.pub >> /home/${ADMIN_USER}/.ssh/authorized_keys # Añadir la clave rsa al home del usuario administrador
-
-        /usr/sbin/sshd -D & # Ejecución del servicio SSH en segundo plano
-
         return 0 # Servicio SSH configurado con éxito
     fi
 }
