@@ -32,4 +32,4 @@ EXPOSE ${DNS_PORT}
 EXPOSE ${DNS_PORT}/udp
 
 # Ejecutar el script de inicio del servicio DNS
-ENTRYPOINT [ "/root/scripts/dns/start_dns.sh" ]
+ENTRYPOINT [ "/root/scripts/dns/start_dnsd.sh" ]

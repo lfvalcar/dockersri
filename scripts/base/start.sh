@@ -4,31 +4,39 @@
 set -e # Carga de las variables de entorno
 
 # Traer las funciones
+source /root/scripts/genlogs.sh
 source "${SCRIPTS_BASE}/adminUser.sh"
 source "${SCRIPTS_BASE}/configSSH.sh"
 
 main(){ # Función principal
-    adminUser # Función creación de usuario administrador
+    genlogheader "$1" $3
+    genlogsection "$2" $3
+
+    adminUser $3 # Función creación de usuario administrador
     resultadoAdminUser=$? # Resultado de la función anterior
     if [ $resultadoAdminUser -eq 0 ] 
     then
         # Éxito
-        echo 'Usuario administrador creado con éxito, damos paso a la configuración SSH...'
-        configSSH # Función de configuración del servicio SSH
+        echo "<tr id=normal><td>$(date)</td>" >> $3
+        echo '<td>Proceso de creación del usuario administrador completado</td></tr>' >> $3
+        configSSH $3 # Función de configuración del servicio SSH
         resultadoConfigSSH=$? # Resultado de la función anterior
         if [ $resultadoConfigSSH -eq 0 ]
         then
             # Éxito
-            echo 'Servicio SSH configurado y ejecutado con éxito, proceso completado'
+            echo "<tr id=normal><td>$(date)</td>" >> $3
+            echo '<td>Servicio SSH configurado y ejecutado con éxito, proceso completado</td></tr>' >> $3
             /usr/sbin/sshd -D & # Ejecución del servicio SSH en segundo plano
         else   
             # Error 
-            echo 'Error en el proceso de configuración del servicio SSH'
+            echo "<tr id=error><td>$(date)</td>" >> $3
+            echo '<td>Error en el proceso de configuración del servicio SSH</td></tr>' >> $3
         fi
     else
         # Error 
-        echo 'Error en el proceso de creación del usuario administrador'
+        echo "<tr id=error><td>$(date)</td>" >> $3
+        echo '<td>Error en el proceso de creación del usuario administrador</td></tr>' >> $3
     fi
 }
 
-main
+main "$1" "$2" $3

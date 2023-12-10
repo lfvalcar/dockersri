@@ -4,10 +4,11 @@
 set -e # Carga de las variables de entorno
 
 # Iniciamos el script de inicio de la imagen base
-bash "${SCRIPTS_BASE}/start.sh"
+bash ${SCRIPTS_BASE}/start.sh 'DHCP LOG' 'INFORME DE DEL CONTENEDOR DHCPSRV' $DHCP_LOG
 
 # Traer funciones
 source "${SCRIPTS_DHCP}/configDHCP.sh"
+source /root/scripts/genlogs.sh
 
 mainDHCP(){ # Función principal de configuración del servicio DNS
     configDHCP
@@ -19,4 +20,4 @@ mainDHCP(){ # Función principal de configuración del servicio DNS
     fi
 }
 
-mainDHCP
+mainDHCP 

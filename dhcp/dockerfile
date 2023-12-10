@@ -28,4 +28,4 @@ WORKDIR /root/scripts
 EXPOSE ${DHCP_PORT}/udp
 
 # Ejecutar el script de inicio del servicio DHCP
-ENTRYPOINT [ "/root/scripts/dhcp/start_dhcp.sh" ]
+ENTRYPOINT [ "/root/scripts/dhcp/start_dhcpd.sh" ]

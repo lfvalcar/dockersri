@@ -23,6 +23,7 @@ services:
       - dns_bind_vol:/etc/bind:ro
       - dns_zonas_vol:/var/cache/bind:rw
       - ./scripts:/root/scripts:ro
+      - ./logs:/root/logs:rw
     networks:
       netddns:
         ipv4_address: 172.16.1.2
@@ -39,11 +40,31 @@ services:
     volumes:
       - dhcp_vol:/etc/dhcp:ro
       - dhcp_leases_vol:/var/lib/dhcp:rw
+      - ./logs:/root/logs:rw
       - ./scripts:/root/scripts:ro
     networks:
       netddns:
         ipv4_address: 172.16.1.3
+  http:
+    container_name: logssrv
+    image: logshttp
+    env_file:
+      - .env
+    build:
+      context: ${CONTEXT}
+      dockerfile: ${CONTEXT}/http/dockerfile
+    ports:
+      - "2103:${SSH_PORT}"
+      - "${HTTP_PORT}:${HTTP_PORT}"
+    volumes:
+      - ./logs:/var/www/html:ro
+      - ./scripts:/root/scripts:ro
+    networks:
+      netlogs:
+        ipv4_address: 172.16.2.2
 networks:
+  netlogs:
+    external: true
   netddns:
     external: true
 volumes:

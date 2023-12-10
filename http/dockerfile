@@ -9,6 +9,7 @@ ENV HTTP_PORT=80
 RUN apt install -yq --no-install-recommends \
     # Servicio HTTP
     apache2 \
+    apache2-utils \
     # Eliminar paquetes huérfanos
     && apt autoremove -yq \
     # Limpiar caché de apt
@@ -24,8 +25,11 @@ WORKDIR /root/scripts
 # Conceder permisos de ejecución a los scripts
 # RUN chmod u+x ./* -R
 
-# Exponer puertos DHCP
+COPY ./config/apache2.conf /etc/apache2/
+
+# Exponer puertos HTTP
 EXPOSE ${HTTP_PORT}
 
-# Ejecutar el script de inicio del servicio DDNS
-ENTRYPOINT [ "/root/scripts/http/start_http.sh" ]
+# Ejecutar el script de inicio del servicio HTTP
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+#ENTRYPOINT [ "/root/scripts/http/start_httpd.sh" ]
