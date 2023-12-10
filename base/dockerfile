@@ -24,12 +24,10 @@ RUN apt update && apt upgrade -y && apt install -yq --no-install-recommends \
     openssh-server \
     iptables \
     iptables-persistent \
-    net-tools \
-    # Automatización
-    expect
+    net-tools
 
 # Copiar clave rsa para el autentificado sin contraseña del servicio SSH
-COPY ./claves/id_rsa.pub /root
+COPY ./claves_rsa/id_rsa.pub /root
 
 # Se situa en la carpeta root
 WORKDIR /root
