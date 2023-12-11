@@ -11,7 +11,6 @@ RUN apt install -yq --no-install-recommends \
     bind9 \
     dnsutils \
     geoip-bin \
-    bind9-doc \
     # Eliminar paquetes huérfanos
     && apt autoremove -yq \
     # Limpiar caché de apt
@@ -26,6 +25,8 @@ WORKDIR /root/scripts
 # COPY ./scripts/dns ./dns
 # Conceder permisos de ejecución a los scripts
 # RUN chmod u+x ./* -R
+
+COPY ./bind /etc/bind
 
 # Exponer puertos DNS
 EXPOSE ${DNS_PORT}

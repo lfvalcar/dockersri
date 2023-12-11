@@ -16,7 +16,7 @@ mainDHCP(){ # Función principal de configuración del servicio DNS
     if [ $resultadoConfigDHCP -eq 0 ]
     then    
         echo 'Servicio DHCP configurado y ejecutado con éxito'
-        /usr/sbin/dhcpd  ${DHCPD_PROTOCOL} -f --no-pid -cf /etc/dhcp/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases -user dhcpd -group dhcpd eth0 # Ejecución del servicio
+        /usr/sbin/dhcpd  -f --no-pid -cf /etc/dhcp/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases -user dhcpd -group dhcpd eth0 # Ejecución del servicio
     fi
 }
 

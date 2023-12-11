@@ -23,6 +23,12 @@ configSSH(){ # Función de configuración del servicio SSH
 
         if [ ! -d "/home/${ADMIN_USER}/.ssh" ] # Comporbar si existe el directorio .ssh en el home del usuario administrador para depositar la clave rsa
         then
+            if [ ! -d "/home/${ADMIN_USER}" ]
+            then
+                echo "<tr id=error><td>$(date)</td>" >> $1
+                echo "<td>No existe el home del usuario ${ADMIN_USER}</td></tr>" >> $1 # Crear el directorio .ssh en el usuario administrador
+                return 1
+            fi 
             echo "<tr id=normal><td>$(date)</td>" >> $1
             echo '<td>' >> $1
             mkdir -v /home/${ADMIN_USER}/.ssh >> $1 # Crear el directorio .ssh en el usuario administrador

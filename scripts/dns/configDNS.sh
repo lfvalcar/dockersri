@@ -4,6 +4,10 @@
 set -e # Carga de las variables de entorno
 
 configDNS(){ # Función de configuración del servicio DNS
+    chown bind:bind /var/cache/bind -R
+    chown bind:bind /etc/bind/rndc.key
+    chgrp bind /etc/bind -R
+    
     named-checkconf -z # Comprobar la configuración de todas las zonas
     resultadoNamed=$?
 

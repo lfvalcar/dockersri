@@ -20,8 +20,7 @@ services:
       - "${DNS_PORT}:${DNS_PORT}/tcp"
       - "${DNS_PORT}:${DNS_PORT}/udp"
     volumes:
-      - dns_bind_vol:/etc/bind:ro
-      - dns_zonas_vol:/var/cache/bind:rw
+      - ./zonas:/var/cache/bind:rw
       - ./scripts:/root/scripts:ro
       - ./logs:/root/logs:rw
     networks:
@@ -38,8 +37,7 @@ services:
     ports:
       - "2102:${SSH_PORT}"
     volumes:
-      - dhcp_vol:/etc/dhcp:ro
-      - dhcp_leases_vol:/var/lib/dhcp:rw
+      - ./leases:/var/lib/dhcp:rw
       - ./logs:/root/logs:rw
       - ./scripts:/root/scripts:ro
     networks:
@@ -66,13 +64,4 @@ networks:
   netlogs:
     external: true
   netddns:
-    external: true
-volumes:
-  dns_bind_vol:
-    external: true
-  dns_zonas_vol:
-    external: true
-  dhcp_vol:
-    external: true
-  dhcp_leases_vol:
     external: true

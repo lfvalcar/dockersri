@@ -9,6 +9,8 @@ ENV DHCP_PORT=67
 RUN apt install -yq --no-install-recommends \
     # Servicio DHCP
     isc-dhcp-server \
+    dhcping \
+    dhcpd-pools \
     # Eliminar paquetes huérfanos
     && apt autoremove -yq \
     # Limpiar caché de apt
@@ -23,6 +25,9 @@ WORKDIR /root/scripts
 # COPY ./scripts/dhcp ./dhcp
 # Conceder permisos de ejecución a los scripts
 # RUN chmod u+x ./* -R
+
+# DHCPD.CONF
+COPY ./config/dhcpd.conf /etc/dhcp
 
 # Exponer puertos DHCP
 EXPOSE ${DHCP_PORT}/udp

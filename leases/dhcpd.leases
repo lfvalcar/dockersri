@@ -1,0 +1,66 @@
+# The format of this file is documented in the dhcpd.leases(5) manual page.
+# This lease file was written by isc-dhcp-4.4.3-P1
+
+# authoring-byte-order entry is generated, DO NOT DELETE
+authoring-byte-order little-endian;
+
+lease 10.10.10.100 {
+  starts 0 2023/12/10 15:11:43;
+  ends 0 2023/12/10 15:21:43;
+  tstp 0 2023/12/10 15:21:43;
+  cltt 0 2023/12/10 15:11:43;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 08:00:27:13:ed:16;
+  uid "\001\010\000'\023\355\026";
+  set vendor-class-identifier = "MSFT 5.0";
+  set ddns-fwd-name = "contabilidad01.cicloasir.icv.";
+  set ddns-txt = "319e0c4b3637e584d434a5e52b514ec3ad";
+  set ddns-rev-name = "100.10.10.10.in-addr.arpa.";
+  client-hostname "contabilidad01";
+}
+lease 10.10.10.101 {
+  starts 0 2023/12/10 15:11:59;
+  ends 0 2023/12/10 15:21:59;
+  tstp 0 2023/12/10 15:21:59;
+  cltt 0 2023/12/10 15:11:59;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 08:00:27:b5:e0:00;
+  uid "\001\010\000'\265\340\000";
+  set ddns-rev-name = "101.10.10.10.in-addr.arpa.";
+  set ddns-txt = "313caf66a5b0e601657c2340dce8f4c255";
+  set ddns-fwd-name = "administrador01.cicloasir.icv.";
+  client-hostname "administrador01";
+}
+server-duid "\000\001\000\001-\010\214U\002B\254\020\001\003";
+
+lease 10.10.10.100 {
+  starts 0 2023/12/10 15:17:55;
+  ends 0 2023/12/10 15:27:55;
+  cltt 0 2023/12/10 15:17:55;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 08:00:27:13:ed:16;
+  uid "\001\010\000'\023\355\026";
+  set vendor-class-identifier = "MSFT 5.0";
+  set ddns-fwd-name = "contabilidad01.cicloasir.icv.";
+  set ddns-txt = "319e0c4b3637e584d434a5e52b514ec3ad";
+  set ddns-rev-name = "100.10.10.10.in-addr.arpa.";
+  client-hostname "contabilidad01";
+}
+lease 10.10.10.101 {
+  starts 0 2023/12/10 15:11:59;
+  ends 0 2023/12/10 15:21:59;
+  tstp 0 2023/12/10 15:21:59;
+  cltt 0 2023/12/10 15:11:59;
+  binding state free;
+  hardware ethernet 08:00:27:b5:e0:00;
+  uid "\001\010\000'\265\340\000";
+  set ddns-rev-name = "101.10.10.10.in-addr.arpa.";
+  set ddns-txt = "313caf66a5b0e601657c2340dce8f4c255";
+  set ddns-fwd-name = "administrador01.cicloasir.icv.";
+}
