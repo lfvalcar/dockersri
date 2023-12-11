@@ -4,12 +4,15 @@
 set -e # Carga de las variables de entorno
 
 configDNS(){ # Función de configuración del servicio DNS
+    # Permisos
     echo "<tr id=normal><td>$(date)</td><td>" >> $DNS_LOG
     chown -v bind:bind /var/cache/bind -R >> $DNS_LOG
     echo '</td></tr>' >> $DNS_LOG
+
     echo "<tr id=normal><td>$(date)</td><td>" >> $DNS_LOG
     chown -v bind:bind /etc/bind/rndc.key >> $DNS_LOG
     echo '</td></tr>' >> $DNS_LOG
+
     echo "<tr id=normal><td>$(date)</td><td>" >> $DNS_LOG
     chgrp -v bind /etc/bind -R >> $DNS_LOG
     echo '</td></tr>' >> $DNS_LOG

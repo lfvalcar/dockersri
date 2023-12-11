@@ -4,7 +4,6 @@ set -e
 
 genlogheader(){
     # Encabezado html
-    echo $1
     echo -e "<!DOCTYPE html>
         <html lang="es">
         <head>
@@ -18,17 +17,18 @@ genlogheader(){
 
 genlogsection(){
     # Sección html
-    echo  -e "<h1>$1</h1> \
-         <table> \
-            <tr> \
-                <th>Fecha del log</th> \
-                <th>Descripción del log</th> \
+    echo  -e "<h1>$1</h1>
+         <table>
+            <tr>
+                <th>Fecha del log</th>
+                <th>Descripción del log</th>
             </tr>" >> $2
 }
 
 genlogfinally(){
     # Final del html
-    echo -e "</table> \
-            </body> \
+    echo -e "</table> <br>
+            <a href='/index.html'><input type='button' value='VOLVER'></a> 
+            </body>
             </html>" >> $1
 }

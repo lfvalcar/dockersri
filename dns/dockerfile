@@ -1,11 +1,12 @@
 # Dockerfile para el servicio DNS
-# Partimos de la imagen base
+# Partimos de la imagen base de debian
 FROM deb-base  
 
+# Variables de entorno en el dockerfile
 ENV DNS_PORT=53
 
 # PAQUETERÍA
-# Instalación de los paquetes necesarios
+# Instalación de los paquetes necesarios para el servicio
 RUN apt install -yq --no-install-recommends \
     # Servicio DNS
     bind9 \
@@ -16,21 +17,24 @@ RUN apt install -yq --no-install-recommends \
     # Limpiar caché de apt
     && apt clean -yq
 
-# Se situa en la carpeta de los scripts
+# Trabajar en la carpeta scripts
 WORKDIR /root/scripts
 
 # SCRIPTS DE CONFIGURACIÓN
 # Copiar los scripts al contenedor
-# COPY ./scripts/base ./base
-# COPY ./scripts/dns ./dns
-# Conceder permisos de ejecución a los scripts
-# RUN chmod u+x ./* -R
 
+# Configuración del servicio
+COPY ./scripts/dns ./dns
+
+# Conceder permisos de ejecución a los scripts
+RUN chmod u+x ./* -R
+
+# Carpeta de configuración del servicio
 COPY ./bind /etc/bind
 
 # Exponer puertos DNS
 EXPOSE ${DNS_PORT}
 EXPOSE ${DNS_PORT}/udp
 
-# Ejecutar el script de inicio del servicio DNS
+# Ejecutar el script de inicialización del servicio DNS
 ENTRYPOINT [ "/root/scripts/dns/start_dnsd.sh" ]

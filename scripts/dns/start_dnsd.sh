@@ -8,10 +8,10 @@ bash ${SCRIPTS_BASE}/start.sh 'LOG DNSSRV' 'INFORME DEL CONTENEDOR DNSSRV' $DNS_
 
 # Traer funciones
 source "${SCRIPTS_DNS}/configDNS.sh"
-source /root/scripts/genlogs.sh
+source "${SCRIPTS_GEN_LOGS}/genlogs.sh"
 
 mainDNS(){ # Función principal de configuración del servicio DNS
-    genlogsection "$2" $DNS_LOG
+    genlogsection "$1" $DNS_LOG
     
     configDNS
     resultadoConfigDNS=$?
@@ -24,4 +24,4 @@ mainDNS(){ # Función principal de configuración del servicio DNS
     fi
 }
 
-mainDNS 'LOG DNSSRV' 'INFORME DEL CONTENEDOR DNSSRV'
+mainDNS 'INFORME DEL CONTENEDOR DNSSRV'

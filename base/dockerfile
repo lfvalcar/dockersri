@@ -1,6 +1,7 @@
 # Dockerfile imagen base de debian
 FROM debian
 
+# Variables de entorno en el dockerfile
 ENV TZ='Europe/Madrid'
 ENV SSH_PORT=2222
 
@@ -8,7 +9,7 @@ ENV SSH_PORT=2222
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
 # PAQUETERÍA
-# Actualizar lista de paquetes, actualizar paquetes y instalación de los paquetes necesarios
+# Actualizar lista de paquetes, actualizar paquetes y instalación de los paquetes bases
 RUN apt update && apt upgrade -y && apt install -yq --no-install-recommends \
     # Utilidades
     apt-utils \
@@ -29,10 +30,17 @@ RUN apt update && apt upgrade -y && apt install -yq --no-install-recommends \
 # Copiar clave rsa para el autentificado sin contraseña del servicio SSH
 COPY ./claves_rsa/id_rsa.pub /root
 
-# Se situa en la carpeta root
+# Trabajar en la carpeta /root
 WORKDIR /root
-# Crea los directorios para el almacenaje de los logs y los scripts de configuración
+
+# Crear los directorios para el almacenaje de los logs y los scripts de configuración
 RUN mkdir logs scripts
+
+# SCRIPTS DE CONFIGURACIÓN
+# Copiar los scripts de configuración base al contenedor
+COPY ./scripts/base ./scripts/base
+# Copiar los scripts de generado de los logs
+COPY ./scripts/logs ./scripts/logs
 
 # Exponer puerto ssh
 EXPOSE ${SSH_PORT}

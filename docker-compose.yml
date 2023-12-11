@@ -21,7 +21,6 @@ services:
       - "${DNS_PORT}:${DNS_PORT}/udp"
     volumes:
       - ./zonas:/var/cache/bind:rw
-      - ./scripts:/root/scripts:ro
       - ./logs:/root/logs:rw
     networks:
       netddns:
@@ -39,7 +38,6 @@ services:
     volumes:
       - ./leases:/var/lib/dhcp:rw
       - ./logs:/root/logs:rw
-      - ./scripts:/root/scripts:ro
     networks:
       netddns:
         ipv4_address: 172.16.1.3
@@ -55,8 +53,7 @@ services:
       - "2103:${SSH_PORT}"
       - "${HTTP_PORT}:${HTTP_PORT}"
     volumes:
-      - ./logs:/var/www/html:ro
-      - ./scripts:/root/scripts:ro
+      - ./logs:/var/www/html:rw
     networks:
       netlogs:
         ipv4_address: 172.16.2.2
