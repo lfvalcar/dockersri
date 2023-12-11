@@ -25,17 +25,9 @@ main(){ # Función principal
         then
             # Éxito
             echo "<tr id=normal><td>$(date)</td>" >> $3
-            echo '<td>Servicio SSH configurado y ejecutado con éxito, proceso completado</td></tr>' >> $3
+            echo '<td>Servicio SSH configurado y ejecutado con éxito, proceso completado</td></tr></table>' >> $3
             /usr/sbin/sshd -D & # Ejecución del servicio SSH en segundo plano
-        else   
-            # Error 
-            echo "<tr id=error><td>$(date)</td>" >> $3
-            echo '<td>Error en el proceso de configuración del servicio SSH</td></tr>' >> $3
         fi
-    else
-        # Error 
-        echo "<tr id=error><td>$(date)</td>" >> $3
-        echo '<td>Error en el proceso de creación del usuario administrador</td></tr>' >> $3
     fi
 }
 

@@ -1,4 +1,4 @@
-# Dockerfile para el servicio DDNS
+# Dockerfile para el servicio DNS
 # Partimos de la imagen base
 FROM deb-base  
 

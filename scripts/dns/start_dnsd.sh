@@ -11,16 +11,17 @@ source "${SCRIPTS_DNS}/configDNS.sh"
 source /root/scripts/genlogs.sh
 
 mainDNS(){ # Función principal de configuración del servicio DNS
+    genlogsection "$2" $DNS_LOG
+    
     configDNS
     resultadoConfigDNS=$?
     if [ $resultadoConfigDNS -eq 0 ]
-    then    
-        echo 'Servicio DNS configurado y ejecutado con éxito'
+    then 
+        echo "<tr id=normal><td>$(date)</td>" >> $DNS_LOG   
+        echo '<td>Servicio DNS configurado y ejecutado con éxito</td></tr></table>' >> $DNS_LOG    
         genlogfinally $DNS_LOG
         /usr/sbin/named -f -c /etc/bind/named.conf -u bind # Ejecución del servicio
-    else
-        echo 'Error en el proceso de configuración del servicio DNS'
     fi
 }
 
-mainDNS
+mainDNS 'LOG DNSSRV' 'INFORME DEL CONTENEDOR DNSSRV'
