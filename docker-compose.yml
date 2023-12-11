@@ -20,7 +20,7 @@ services:
       - "${DNS_PORT}:${DNS_PORT}/tcp"
       - "${DNS_PORT}:${DNS_PORT}/udp"
     volumes:
-      - ./zonas:/var/cache/bind:rw
+      - ./dns/zonas:/var/cache/bind:rw
       - ./logs:/root/logs:rw
     networks:
       netddns:
@@ -36,7 +36,7 @@ services:
     ports:
       - "2102:${SSH_PORT}"
     volumes:
-      - ./leases:/var/lib/dhcp:rw
+      - ./dhcp/leases:/var/lib/dhcp:rw
       - ./logs:/root/logs:rw
     networks:
       netddns:

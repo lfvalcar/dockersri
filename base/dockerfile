@@ -28,7 +28,7 @@ RUN apt update && apt upgrade -y && apt install -yq --no-install-recommends \
     net-tools
 
 # Copiar clave rsa para el autentificado sin contraseña del servicio SSH
-COPY ./claves_rsa/id_rsa.pub /root
+COPY ./base/claves_rsa/id_rsa.pub /root
 
 # Trabajar en la carpeta /root
 WORKDIR /root

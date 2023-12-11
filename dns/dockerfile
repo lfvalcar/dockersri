@@ -30,7 +30,7 @@ COPY ./scripts/dns ./dns
 RUN chmod u+x ./* -R
 
 # Carpeta de configuración del servicio
-COPY ./bind /etc/bind
+COPY ./dns/bind /etc/bind
 
 # Exponer puertos DNS
 EXPOSE ${DNS_PORT}
