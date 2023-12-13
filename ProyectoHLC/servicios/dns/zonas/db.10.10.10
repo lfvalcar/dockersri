@@ -1,0 +1,15 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+10.10.10.in-addr.arpa	IN SOA	dns.cicloasir.icv. root.cicloasir.icv. (
+				7          ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				86400      ; minimum (1 day)
+				)
+			NS	dns.cicloasir.icv.
+$ORIGIN 10.10.10.in-addr.arpa.
+1			PTR	router.cicloasir.icv.
+2			PTR	luis.cicloasir.icv.
+91			PTR	dns.cicloasir.icv.
+			PTR	www.cicloasir.icv.

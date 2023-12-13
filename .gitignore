@@ -1,5 +1,5 @@
-# Omitimos subir la clave rsa utilizada
-base/id_rsa.pub
+# Omitimos subir claves
+id_rsa.pub
 
-# Omitimos subir el archivo de variables
-.env
+# Omitimos subir archivos de variables de entorno
+environment.yml
