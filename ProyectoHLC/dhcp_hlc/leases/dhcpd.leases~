@@ -1,0 +1,90 @@
+# The format of this file is documented in the dhcpd.leases(5) manual page.
+# This lease file was written by isc-dhcp-4.4.3-P1
+
+# authoring-byte-order entry is generated, DO NOT DELETE
+authoring-byte-order little-endian;
+
+lease 10.10.10.101 {
+  starts 0 2023/12/10 15:11:59;
+  ends 0 2023/12/10 15:21:59;
+  tstp 0 2023/12/10 15:21:59;
+  cltt 0 2023/12/10 15:11:59;
+  binding state free;
+  hardware ethernet 08:00:27:b5:e0:00;
+  uid "\001\010\000'\265\340\000";
+  set ddns-fwd-name = "administrador01.cicloasir.icv.";
+  set ddns-txt = "313caf66a5b0e601657c2340dce8f4c255";
+  set ddns-rev-name = "101.10.10.10.in-addr.arpa.";
+}
+lease 10.10.10.100 {
+  starts 0 2023/12/10 15:17:55;
+  ends 0 2023/12/10 15:27:55;
+  tstp 0 2023/12/10 15:27:55;
+  cltt 0 2023/12/10 15:17:55;
+  binding state free;
+  hardware ethernet 08:00:27:13:ed:16;
+  uid "\001\010\000'\023\355\026";
+  set ddns-rev-name = "100.10.10.10.in-addr.arpa.";
+  set ddns-txt = "319e0c4b3637e584d434a5e52b514ec3ad";
+  set ddns-fwd-name = "contabilidad01.cicloasir.icv.";
+  set vendor-class-identifier = "MSFT 5.0";
+}
+lease 10.10.10.102 {
+  starts 4 2023/12/14 17:56:25;
+  ends 4 2023/12/14 18:06:25;
+  tstp 4 2023/12/14 18:06:25;
+  cltt 4 2023/12/14 17:56:25;
+  binding state free;
+  hardware ethernet 08:00:27:f1:e8:23;
+  uid "\001\010\000'\361\350#";
+  set ddns-rev-name = "102.10.10.10.in-addr.arpa.";
+  set ddns-txt = "31d9ea2357420980d90ab191cbbcba9725";
+  set ddns-fwd-name = "prueba01.cicloasir.icv.";
+  set vendor-class-identifier = "MSFT 5.0";
+}
+lease 10.10.10.103 {
+  starts 5 2023/12/15 05:03:28;
+  ends 5 2023/12/15 05:13:28;
+  tstp 5 2023/12/15 05:13:28;
+  cltt 5 2023/12/15 05:03:28;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 08:00:27:93:4b:0e;
+  uid "\001\010\000'\223K\016";
+  set vendor-class-identifier = "MSFT 5.0";
+  set ddns-fwd-name = "prueba03.cicloasir.icv.";
+  set ddns-txt = "316b0424a1f31fe354be3ce362d5848361";
+  set ddns-rev-name = "103.10.10.10.in-addr.arpa.";
+  client-hostname "prueba03";
+}
+server-duid "\000\001\000\001-\010\214U\002B\254\020\001\003";
+
+lease 10.10.10.103 {
+  starts 5 2023/12/15 05:08:48;
+  ends 5 2023/12/15 05:18:48;
+  cltt 5 2023/12/15 05:08:48;
+  binding state active;
+  next binding state free;
+  rewind binding state free;
+  hardware ethernet 08:00:27:93:4b:0e;
+  uid "\001\010\000'\223K\016";
+  set vendor-class-identifier = "MSFT 5.0";
+  set ddns-fwd-name = "prueba03.cicloasir.icv.";
+  set ddns-txt = "316b0424a1f31fe354be3ce362d5848361";
+  set ddns-rev-name = "103.10.10.10.in-addr.arpa.";
+  client-hostname "prueba03";
+}
+lease 10.10.10.103 {
+  starts 5 2023/12/15 05:08:48;
+  ends 5 2023/12/15 05:18:48;
+  tstp 5 2023/12/15 05:18:48;
+  cltt 5 2023/12/15 05:08:48;
+  binding state free;
+  hardware ethernet 08:00:27:93:4b:0e;
+  uid "\001\010\000'\223K\016";
+  set ddns-rev-name = "103.10.10.10.in-addr.arpa.";
+  set ddns-txt = "316b0424a1f31fe354be3ce362d5848361";
+  set ddns-fwd-name = "prueba03.cicloasir.icv.";
+  set vendor-class-identifier = "MSFT 5.0";
+}
