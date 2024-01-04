@@ -1,15 +1,16 @@
-$ORIGIN .
-$TTL 86400	; 1 day
-cicloasir.icv		IN SOA	dns.cicloasir.icv. root.cicloasir.icv. (
-				10         ; serial
-				604800     ; refresh (1 week)
-				86400      ; retry (1 day)
-				2419200    ; expire (4 weeks)
-				86400      ; minimum (1 day)
-				)
-			NS	dns.cicloasir.icv.
-$ORIGIN cicloasir.icv.
-dns			A	10.10.10.91
-luis			A	10.10.10.2
-router			A	10.10.10.1
-www			CNAME	dns
+$TTL	86400
+@	IN	SOA	dns.cicloasir.icv. root.cicloasir.icv. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			  86400 )	; Negative Cache TTL
+;
+@	    IN	    NS	    dns.cicloasir.icv.
+;
+; asignaciones estáticas
+;
+dns     	IN      A       10.10.10.91
+www     	IN      CNAME   dns.cicloasir.icv.
+router  	IN      A       10.10.10.1
+anfitrion   IN      A       10.10.10.2

@@ -13,4 +13,4 @@ $TTL	86400
 91      IN      PTR     dns.cicloasir.icv.
 91      IN      PTR     www.cicloasir.icv.
 1       IN      PTR     router.cicloasir.icv.
-2       IN      PTR     luis.cicloasir.icv.
+2       IN      PTR     anfitrion.cicloasir.icv.
