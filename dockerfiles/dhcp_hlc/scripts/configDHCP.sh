@@ -10,7 +10,7 @@ configDHCP(){ # Función de configuración del servicio DHCP
         echo '<td>El archivo /etc/default/isc-dhcp-server no existe</td></tr>' >> $LOG
         return 1 # Error inesperado
     else
-        sed -i 's/INTERFACESv4=""/INTERFACESv4="eth0"/g' /etc/default/isc-dhcp-server # Definir las interfaces que participan el servicio DHCP
+        sed -i "s/INTERFACESv4=""/INTERFACESv4="${IFACE}"/g" /etc/default/isc-dhcp-server # Definir las interfaces que participan el servicio DHCP
     fi
 
     if [ $(grep -c dhcpd /etc/passwd) -eq 1 ]

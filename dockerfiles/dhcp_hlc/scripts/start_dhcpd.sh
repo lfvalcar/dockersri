@@ -18,7 +18,7 @@ mainDHCP(){ # Función principal de configuración del servicio DNS
         echo "<tr id=normal><td>$(date)</td>" >> $LOG
         echo '<td>Servicio DHCP configurado y ejecutado con éxito</td></tr>' >> $LOG
         genlogfinally
-        /usr/sbin/dhcpd -f --no-pid -cf /etc/dhcp/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases -user dhcpd -group dhcpd eth0 # Ejecución del servicio
+        /usr/sbin/dhcpd -f --no-pid -cf /etc/dhcp/dhcpd.conf -lf /var/lib/dhcp/dhcpd.leases -user dhcpd -group dhcpd ${IFACE} # Ejecución del servicio
     fi
 }
 

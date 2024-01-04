@@ -14,6 +14,6 @@ zone "cicloasir.icv" {
 //
 zone "10.10.10.in-addr.arpa" {
     type master;
-    file "db.10.10.10";
+    file "db.2.168.192";
     allow-update { key "rndc-key"; };
 };

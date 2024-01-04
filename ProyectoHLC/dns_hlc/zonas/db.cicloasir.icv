@@ -10,7 +10,3 @@ $TTL	86400
 ;
 ; asignaciones estáticas
 ;
-dns     	IN      A       10.10.10.91
-www     	IN      CNAME   dns.cicloasir.icv.
-router  	IN      A       10.10.10.1
-anfitrion   IN      A       10.10.10.2
