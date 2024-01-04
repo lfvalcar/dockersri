@@ -10,8 +10,13 @@ configSSH(){ # Función de configuración del servicio SSH
         echo '<td>El archivo /etc/ssh/sshd_config no existe</td></tr>'
         return 1 # Error inesperado
     else 
-        sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config # Denegar la conexión de ssh a root
+        sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/g' /etc/ssh/sshd_config # Denegar la conexión de ssh a root
         sed -i "s/#Port 22/Port ${SSH_PORT}/g" /etc/ssh/sshd_config # Establecer puerto distinto para la conexión SSH
+        sed -i 's/#LoginGraceTime 2m/LoginGraceTime 5m/g' /etc/ssh/sshd_config # En caso de bloqueo, un tiempo de espera de 5m para volver
+        sed -i 's/#MaxSessions 10/MaxSessions 3/g' /etc/ssh/sshd_config # Un máximo de 3 conexiones activas ssh
+        sed -i 's/#MaxAuthTries 6/MaxAuthTries 3/g' /etc/ssh/sshd_config # Un máximo de 3 intentos fallidos de autenticación
+        sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/g' /etc/ssh/sshd_config # Se permite la autenticación mediante clave pública
+        sed -i 's/#   PasswordAuthentication yes/    PasswordAuthentication no/g' /etc/ssh/ssh_config # Se deniega la autenticación mediante contraseña
         
         if [ ! -d /var/run/sshd ] # Comprobar si existe el directorio /var/run/sshd
         then

@@ -1,6 +1,6 @@
 # Dockerfile para el servicio DNS
 # Partimos de la imagen base de debian
-FROM deb-base  
+FROM lfvalcar/deb-base
 
 # Argumentos
 ARG DNS_PORT

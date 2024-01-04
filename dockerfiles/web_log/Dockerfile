@@ -1,6 +1,6 @@
 # Dockerfile para el servicio HTTP
 # Partimos de la imagen base de debian
-FROM deb-base  
+FROM lfvalcar/deb-base  
 
 # Variables de entorno en el dockerfile
 ARG HTTP_PORT
