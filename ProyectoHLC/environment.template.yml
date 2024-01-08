@@ -1,0 +1,20 @@
+# Ubicación del proyecto (Contexto)
+CONTEXT=/home/adminsrv/dockersri
+# Clave rsa para la autenticación SSH sin contraseña
+IDRSA=claves/id_rsa.pub
+# Puertos utilizados para los servicios
+SSH_PORT=2222
+DHCP_PORT=67
+DNS_PORT=53
+HTTP_PORT=80
+# Usuario y contraseña de los usuarios administradores de los servicios
+ADMIN_USER=usuario
+ADMIN_PASSWORD=usuario
+# Carpeta en los contenedores que almacena los scripts copiados
+SCRIPTS=/root/scripts
+# Directorios Dockerfiles
+DNS_DOCKERFILE=dockerfiles/dns_hlc
+DHCP_DOCKERFILE=dockerfiles/dhcp_hlc
+HTTP_DOCKERFILE=dockerfiles/web_log
+# Interfaz de escucha del protocolo DHCP (host)
+IFACE=enp0s3
