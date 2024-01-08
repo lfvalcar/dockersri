@@ -1,0 +1,2 @@
+docker compose --env-file ProyectoHLC/environment.template.yml \ 
+-f ProyectoHLC/docker-compose.yml up -d --build
