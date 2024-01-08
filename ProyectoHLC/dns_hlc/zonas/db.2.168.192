@@ -10,3 +10,6 @@ $TTL	86400
 ;
 ; asignaciones estáticas
 ;
+100		IN		PTR		dns.cicloasir.icv.
+2		IN		PTR		anfitrion.cicloasir.icv.
+1		IN		PTR		router.cicloasir.icv.

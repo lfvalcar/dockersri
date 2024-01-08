@@ -10,3 +10,6 @@ $TTL	86400
 ;
 ; asignaciones estáticas
 ;
+dns			IN		A		192.168.2.100
+anfitrion	IN		A 		192.168.2.2
+router		IN		A 		192.168.2.1
